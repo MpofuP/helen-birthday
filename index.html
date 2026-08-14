@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>PROJECT FLORENCE</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- SCREEN 01: BOOT -->
+  <section class="screen active" id="screen-boot">
+    <div class="panel">
+      <pre class="terminal" id="boot-terminal"></pre>
+      <div class="name-input-wrap hidden" id="name-input-wrap">
+        <label for="name-input">ENTER YOUR NAME:</label>
+        <input type="text" id="name-input" autocomplete="off" placeholder="_">
+        <button class="btn btn-blue" id="btn-verify">VERIFY IDENTITY</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 02: IDENTITY VERIFICATION -->
+  <section class="screen" id="screen-verify">
+    <div class="panel">
+      <pre class="terminal" id="verify-terminal"></pre>
+      <button class="btn btn-blue hidden" id="btn-open-case">OPEN CASE</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 03: CASE FILE -->
+  <section class="screen" id="screen-case">
+    <div class="panel">
+      <div class="case-card">
+        <div class="case-header">CLASSIFIED CASE FILE<br><span id="case-id-display">FLR-0826</span></div>
+        <div class="case-row"><span>CASE STATUS</span><b class="status-active">ACTIVE</b></div>
+        <div class="case-row"><span>SUBJECT</span><b id="case-subject">FLORENCE</b></div>
+        <div class="case-row"><span>INCIDENT</span><b>A birthday surprise has been detected.</b></div>
+        <div class="case-row"><span>UNKNOWN INDIVIDUAL</span><b>IDENTITY HIDDEN</b></div>
+        <div class="case-row"><span>MOTIVE</span><b>UNKNOWN</b></div>
+        <div class="case-row"><span>OBJECTIVE</span><b>Find out who prepared this.</b></div>
+      </div>
+      <button class="btn btn-blue" id="btn-start-investigation">START INVESTIGATION</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 04: BIRTHDAY CHECKPOINT -->
+  <section class="screen" id="screen-birthday">
+    <div class="panel">
+      <div class="section-title">SECURITY CHECKPOINT 01</div>
+      <p class="muted">Every investigation begins with knowing the subject.<br>What month were you born?</p>
+      <div class="month-grid" id="month-grid"></div>
+      <pre class="terminal small" id="birthday-terminal"></pre>
+      <button class="btn btn-blue hidden" id="btn-continue-trace">CONTINUE</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 05: TRACE MODE -->
+  <section class="screen" id="screen-trace">
+    <div class="panel">
+      <pre class="terminal" id="trace-terminal"></pre>
+      <div class="progress-bar"><div class="progress-fill" id="trace-progress"></div></div>
+      <button class="btn btn-blue hidden" id="btn-investigate-suspects">INVESTIGATE SUSPECTS</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 06: SUSPECTS -->
+  <section class="screen" id="screen-suspects">
+    <div class="panel">
+      <div class="suspect-card">
+        <div class="suspect-id" id="suspect-id">SUSPECT_01</div>
+        <div class="suspect-label">KNOWN BEHAVIOR</div>
+        <ul class="suspect-list" id="suspect-list"></ul>
+        <div class="suspect-label">THREAT LEVEL</div>
+        <div class="threat-level" id="threat-level">LOW</div>
+      </div>
+      <button class="btn btn-blue" id="btn-next-suspect">NEXT SUSPECT</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 07: SUSPECT REVEAL -->
+  <section class="screen" id="screen-reveal">
+    <div class="panel">
+      <pre class="terminal" id="reveal-terminal"></pre>
+      <div class="reveal-name hidden" id="reveal-name"></div>
+      <button class="btn btn-pink hidden" id="btn-reveal-motive">REVEAL MOTIVE</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 08: FINAL DECRYPTION -->
+  <section class="screen" id="screen-decrypt">
+    <div class="panel">
+      <pre class="terminal" id="decrypt-terminal"></pre>
+      <div class="progress-bar"><div class="progress-fill pink" id="decrypt-progress"></div></div>
+    </div>
+  </section>
+
+  <!-- SCREEN 09: ROMANTIC MESSAGE -->
+  <section class="screen" id="screen-message">
+    <div class="panel message-panel">
+      <div class="message-text" id="message-text"></div>
+      <button class="btn btn-pink hidden" id="btn-close-case">CLOSE CASE</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 10: CASE CLOSED -->
+  <section class="screen" id="screen-closed">
+    <div class="panel">
+      <pre class="terminal" id="closed-terminal"></pre>
+      <button class="btn btn-pink hidden" id="btn-continue-final">CONTINUE</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 11: FINAL PHOTO -->
+  <section class="screen" id="screen-final">
+    <div class="panel final-panel">
+      <div class="final-label">FINAL FILE</div>
+      <div class="photo-frame">
+        <img src="assets/our-photo.jpg" alt="Us" id="final-photo" onerror="this.parentElement.classList.add('no-photo')">
+        <div class="photo-fallback">Add assets/our-photo.jpg</div>
+      </div>
+      <div class="final-caption">One more thing...<br>Happy Birthday, Florence.</div>
+    </div>
+  </section>
+
+</div>
+
+<audio id="audio-boot" src="assets/sounds/boot.mp3" preload="auto"></audio>
+<audio id="audio-typing" src="assets/sounds/typing.mp3" preload="auto"></audio>
+<audio id="audio-click" src="assets/sounds/click.mp3" preload="auto"></audio>
+<audio id="audio-success" src="assets/sounds/success.mp3" preload="auto"></audio>
+<audio id="audio-error" src="assets/sounds/error.mp3" preload="auto"></audio>
+<audio id="audio-reveal" src="assets/sounds/reveal.mp3" preload="auto"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
