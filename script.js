@@ -3,8 +3,8 @@
    ============================================ */
 const CONFIG = {
   herName: "Florence",
-  birthdayMonth: "August",   // must match one of the month button labels exactly
-  myName: "Dumisa",       // <-- put your real name here
+  birthdayMonth: "August",
+  myName: "Dumisa",
   caseId: "FLR-0826",
   photoPath: "assets/our-photo.jpg",
   finalMessage:
@@ -14,7 +14,7 @@ If you've made it this far, congratulations.
 
 You successfully investigated the case.
 
-Although... I may have made the investigation slightly unfair. 
+Although... I may have made the investigation slightly unfair.
 
 I wanted to make you something instead of just sending you another ordinary "Happy Birthday."
 
@@ -72,6 +72,25 @@ function playSound(id) {
   } catch (e) {}
 }
 
+/* Starts a long/looping sound only if it's not already playing */
+function startLoopSound(id) {
+  if (!audioUnlocked) return;
+  const el = $(id);
+  if (!el) return;
+  if (el.paused) {
+    el.currentTime = 0;
+    el.play().catch(() => {});
+  }
+}
+
+/* Cleanly stops a sound and resets it */
+function stopSound(id) {
+  const el = $(id);
+  if (!el) return;
+  el.pause();
+  el.currentTime = 0;
+}
+
 function unlockAudio() {
   if (audioUnlocked) return;
   audioUnlocked = true;
@@ -84,15 +103,18 @@ function unlockAudio() {
 }
 
 function showScreen(id) {
+  stopSound("audio-typing");
   document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
   $(id).classList.add("active");
   window.scrollTo(0, 0);
 }
 
+/* Typewriter effect - plays typing sound ONCE for the whole block, stops exactly when done */
 function typeLines(el, lines, speed = 18, lineDelay = 250) {
   return new Promise(resolve => {
     el.textContent = "";
     let li = 0, ci = 0;
+    startLoopSound("audio-typing");
 
     function typeChar() {
       const line = lines[li];
@@ -100,7 +122,6 @@ function typeLines(el, lines, speed = 18, lineDelay = 250) {
       if (ci < line.length) {
         el.textContent += line[ci];
         ci++;
-        if (ci % 3 === 0) playSound("audio-typing");
         setTimeout(typeChar, speed);
       } else {
         li++;
@@ -108,6 +129,7 @@ function typeLines(el, lines, speed = 18, lineDelay = 250) {
         if (li < lines.length) {
           setTimeout(typeChar, lineDelay);
         } else {
+          stopSound("audio-typing");
           resolve();
         }
       }
