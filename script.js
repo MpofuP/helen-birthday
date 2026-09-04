@@ -2,13 +2,13 @@
    CONFIG - CHANGE THESE VALUES FOR FLORENCE
    ============================================ */
 const CONFIG = {
-  herName: "Florence",
-  birthdayMonth: "August",
+  herName: "Helen Ayanda",
+  birthdayMonth: "SEPTEMBER",
   myName: "Dumisa",
-  caseId: "FLR-0826",
+  caseId: "HLA-0826",
   photoPath: "assets/our-photo.jpg",
   finalMessage:
-`Florence,
+`Ayanda,
 
 If you've made it this far, congratulations.
 
@@ -26,7 +26,7 @@ I hope this birthday brings you beautiful moments, unexpected adventures, and pl
 
 And selfishly... I hope I get to be part of some of those moments.
 
-Happy Birthday, Florence.
+Happy Birthday, Ayanda.
 
 You are definitely someone worth getting to know, one mystery at a time.
 
@@ -41,16 +41,16 @@ const MONTHS = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST
 const SUSPECTS = [
   { id: "SUSPECT_01", threat: "LOW", behavior: [
       "Has access to the internet",
-      "Knows Florence",
+      "Knows Helen",
       "Has suspicious intentions"
   ]},
   { id: "SUSPECT_02", threat: "MEDIUM", behavior: [
       "Has excellent taste",
-      "Knows Florence's birthday",
+      "Knows Helen's birthday",
       "May have been planning something"
   ]},
   { id: "SUSPECT_03", threat: "EXTREMELY SUSPICIOUS", behavior: [
-      "Knows Florence",
+      "Knows Helen",
       "Wanted to make her smile",
       "Has been thinking about her",
       "Built this entire system"
